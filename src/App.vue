@@ -1,7 +1,9 @@
 <template>
   <div>
-    <LikeHeader></LikeHeader>
-    <p> {{ number }}</p>
+    <LikeHeader headerText="hello">
+      <h1>トータルのいいね数</h1>
+      <p> {{ number }}</p>
+    </LikeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
     <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
   </div>
@@ -31,4 +33,7 @@ export default {
 div {
   border: 1px solid blue;
 }
+/* h1 {
+  color: green;
+} */
 </style>
