@@ -2,7 +2,7 @@
   <div>
     <LikeHeader></LikeHeader>
     <p> {{ number }}</p>
-    <LikeNumber :total-number="number"></LikeNumber>
+    <LikeNumber></LikeNumber>
     <LikeNumber :total-number="number"></LikeNumber>
   </div>
 </template>
