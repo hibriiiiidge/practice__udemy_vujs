@@ -1,8 +1,12 @@
 <template>
   <div>
-    <LikeHeader headerText="hello">
-      <h1>トータルのいいね数</h1>
-      <p> {{ number }}</p>
+    <LikeHeader>
+      <template v-slot:title>
+        <h2>こんにちは</h2>
+      </template>
+      <template v-slot:number>
+        <p>{{ number }}</p>
+      </template>
     </LikeHeader>
     <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
     <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
