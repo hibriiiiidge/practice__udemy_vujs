@@ -1,9 +1,6 @@
 <template>
   <div>
     <slot></slot>
-    <slot user="user"></slot>
-    <hr>
-    <p>いいねの数</p>
   </div>
 </template>
 
