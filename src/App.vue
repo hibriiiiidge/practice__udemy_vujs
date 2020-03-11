@@ -19,6 +19,9 @@
       <label for="host">host</label>
       <input type="text" id="host" v-model.trim="eventData.host">
       <pre>{{ eventData.host }}</pre>
+      <label for="detail">detail</label>
+      <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
+      <pre>{{ eventData.detail }}</pre>
     </div>
   </div>
 </template>
@@ -41,7 +44,8 @@ export default {
       eventData: {
         title: "",
         maxNumber: 0,
-        host: ""
+        host: "",
+        detail: ""
       }
     }
   },
