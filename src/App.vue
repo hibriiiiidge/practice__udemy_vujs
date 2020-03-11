@@ -22,6 +22,34 @@
       <label for="detail">detail</label>
       <textarea id="detail" cols="30" rows="10" v-model="eventData.detail"></textarea>
       <pre>{{ eventData.detail }}</pre>
+
+      <label for="isPrivate">非公開</label>
+      <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
+      <pre>{{ eventData.isPrivate }}</pre>
+
+      <label for="target">参加条件</label>
+      <label for="10">10代</label>
+      <input type="checkbox" id="10" value="10代" v-model="eventData.target">
+      <label for="20">20代</label>
+      <input type="checkbox" id="20" value="20代" v-model="eventData.target">
+      <label for="30">30代</label>
+      <input type="checkbox" id="30" value="30代" v-model="eventData.target">
+      <p>{{ eventData.target }}</p>
+
+
+      <p>参加費</p>
+      <label for="free">無料</label>
+      <input type="radio" id="free" value="free" v-model="eventData.price">
+      <label for="paid">有料</label>
+      <input type="radio" id="paid" value="paid" v-model="eventData.price">
+
+      <p>開催場所</p>
+      <select v-model="eventData.location" multiple>
+        <option v-for="location in locations" :key="location">
+          {{ location }}
+        </option>
+      </select>
+      <p>{{ eventData.location }}</p>
     </div>
   </div>
 </template>
@@ -41,11 +69,16 @@ export default {
     return {
       number: 14,
       currentComponent: "Home",
+      locations: ["東京", "大阪", "名古屋"],
       eventData: {
         title: "",
         maxNumber: 0,
         host: "",
-        detail: ""
+        detail: "",
+        isPrivate: false,
+        target: [],
+        price: 'free',
+        location: []
       }
     }
   },
