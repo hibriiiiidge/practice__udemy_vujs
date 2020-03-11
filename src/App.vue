@@ -9,6 +9,17 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
+    <div>
+      <label for="title">タイトル</label>
+      <input type="text" id="title" v-model.lazy="eventData.title">
+      <pre>{{ eventData.title }}</pre>
+      <label for="maxNumber">数字</label>
+      <input type="number" id="maxNumber" v-model.number="eventData.maxNumber">
+      <p>{{ typeof eventData.maxNumber }}</p>
+      <label for="host">host</label>
+      <input type="text" id="host" v-model.trim="eventData.host">
+      <pre>{{ eventData.host }}</pre>
+    </div>
   </div>
 </template>
 
@@ -26,7 +37,12 @@ export default {
   data() {
     return {
       number: 14,
-      currentComponent: "Home"
+      currentComponent: "Home",
+      eventData: {
+        title: "",
+        maxNumber: 0,
+        host: ""
+      }
     }
   },
   methods: {
