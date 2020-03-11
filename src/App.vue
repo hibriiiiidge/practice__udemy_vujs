@@ -10,9 +10,12 @@
       <component :is="currentComponent"></component>
     </keep-alive>
     <div>
-      <label for="title">タイトル</label>
-      <input type="text" id="title" :value="eventData.title" @input="eventData.title = $event.target.value">
-      <pre>{{ eventData.title }}</pre>
+      <EventTitle v-model="eventData.title"></EventTitle>
+
+      <!-- <EventTitle
+        :value="eventData.title"
+        @input="eventData.title = $event"
+      ></EventTitle> -->
 
       <label for="maxNumber">数字</label>
       <input type="number" id="maxNumber" v-model.number="eventData.maxNumber">
@@ -61,12 +64,14 @@
 import LikeHeader from './components/LikeHeader.vue'
 import About from './components/About.vue'
 import Home from './components/Home.vue'
+import EventTitle from './EventTitle.vue'
 
 export default {
   components: {
     LikeHeader,
     About,
-    Home
+    Home,
+    EventTitle
   },
   data() {
     return {
