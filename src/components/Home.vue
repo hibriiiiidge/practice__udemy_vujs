@@ -1,5 +1,5 @@
 <template>
-  <div v-border>
+  <div v-border:solid.round.shadow="{ width: '10px', color: 'blue' }">
     Home
   </div>
 </template>
