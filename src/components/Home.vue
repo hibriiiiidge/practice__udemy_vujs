@@ -1,12 +1,32 @@
 <template>
-  <div v-border:solid.round.shadow="{ width: '10px', color: 'blue' }">
-    Home
+  <div>
+    <div v-border:solid.round.shadow="{ width: '10px', color: 'blue' }">Home</div>
+    <div>{{ upperCaseTitle }}</div>
+    <div>{{ subtitle | upperCase | lowerCase }}</div>
+    <div>{{ body | lowerCase | upperCase }}</div>
   </div>
 </template>
 
 
 <script>
 export default {
+  data() {
+    return {
+      title: 'hello',
+      subtitle: 'Nice to meet you',
+      body: 'How do you do?',
+    }
+  },
+  computed: {
+    upperCaseTitle() {
+      return this.title.toUpperCase()
+    }
+  },
+  filters: {
+    lowerCase(value) {
+      return value.toLowerCase()
+    }
+  },
   directives: {
     border(el, binding) {
       el.style.borderWidth = binding.value.width
