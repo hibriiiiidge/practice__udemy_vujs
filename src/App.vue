@@ -9,7 +9,7 @@
     <keep-alive>
       <component :is="currentComponent"></component>
     </keep-alive>
-    <div>
+    <div style="margin-top: 500px;">
       <EventTitle v-model="eventData.title"></EventTitle>
 
       <!-- <EventTitle

@@ -40,6 +40,20 @@ Vue.filter("upperCase", function(value){
   return value.toUpperCase()
 })
 
+Vue.mixin({
+  created() {
+    console.log("created in global mixin")
+  }
+})
+
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
 new Vue({
-  render: h => h(App),
+  render: function(h) {
+    console.log(h(App));
+
+    return h(App)
+  }
 }).$mount('#app')

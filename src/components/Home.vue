@@ -4,27 +4,32 @@
     <div>{{ upperCaseTitle }}</div>
     <div>{{ subtitle | upperCase | lowerCase }}</div>
     <div>{{ body | lowerCase | upperCase }}</div>
+    <p>{{ number }}</p>
+    <button @click="number++">countUp</button>
+    <CountNumber></CountNumber>
   </div>
 </template>
 
 
 <script>
+import CountNumber from './CountNumber'
+import { tokyoNumber } from '@/tokyoNumber'
+
 export default {
+  components: {
+    CountNumber
+  },
+  mixins: [
+    tokyoNumber
+  ],
   data() {
     return {
       title: 'hello',
-      subtitle: 'Nice to meet you',
-      body: 'How do you do?',
     }
   },
   computed: {
     upperCaseTitle() {
       return this.title.toUpperCase()
-    }
-  },
-  filters: {
-    lowerCase(value) {
-      return value.toLowerCase()
     }
   },
   directives: {
