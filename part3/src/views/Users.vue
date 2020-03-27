@@ -10,6 +10,7 @@
       User No. {{ id }}
     </p>
     <router-link :to="'/users/' + (Number(id) + 1) + '/profile'">次のユーザー</router-link>
+    <router-link :to="{ name: 'user-id-profile', params: { id: (Number(id) + 1) }, query: { lang: 'ja', hoge: 2 } }">次のユーザー</router-link>
     <router-view></router-view>
   </div>
 </template>
