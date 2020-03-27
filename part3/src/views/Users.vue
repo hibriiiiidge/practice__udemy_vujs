@@ -9,18 +9,14 @@
     <p>
       User No. {{ id }}
     </p>
+    <router-link :to="'/users/' + (Number(id) + 1) + '/profile'">次のユーザー</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 
 <script>
 export default {
-  props: ["id"],
-  watch: {
-    $route(to, from) {
-      console.log(to)
-      console.log(from)
-    }
-  }
+  props: ["id"]
 }
 </script>
