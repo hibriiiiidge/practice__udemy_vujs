@@ -1,9 +1,25 @@
 <template>
   <div>
     <router-view name="header"></router-view>
-    <router-view></router-view>
+    <transition
+      name="fade"
+      mode="out-in"
+      @before-enter="beforeEnter"
+    >
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    beforeEnter() {
+      this.$root.$emit("triggerScroll")
+    }
+  }
+}
+</script>
 
 <style scoped>
 .fade-enter,

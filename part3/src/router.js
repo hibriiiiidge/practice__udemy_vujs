@@ -6,6 +6,7 @@ import UsersPosts from './views/UsersPosts.vue'
 import UsersProfile from './views/UsersProfile.vue'
 import HeaderHome from './views/HeaderHome.vue'
 import HeaderUser from './views/HeaderUser.vue'
+// import 'core-js/es';
 
 Vue.use(Router)
 
@@ -48,23 +49,23 @@ export default new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
+    console.log(savedPosition)
+    console.log(from)
     console.log(to);
-    console.log(from);
-    console.log(savedPosition);
 
-    if(savedPosition) {
-      return savedPosition
-    }
-
-    if(to.hash) {
-      return {
-        selector: to.hash
-      }
-    }
-    return {
-      selector: '#next-user',
-      offset: { x: 0, y: 100 }
-    }
-    // return { x: 0, y: 100 }
+    return new Promise(resolve => {
+      this.app.$root.$once("triggerScroll", () => {
+        let postion = { x: 0, y: 0 }
+        if (savedPosition) {
+          postion = savedPosition
+        }
+        if (to.hash) {
+          postion = {
+            selector: to.hash
+          }
+        }
+        resolve(postion)
+      })
+    })
   }
 })
