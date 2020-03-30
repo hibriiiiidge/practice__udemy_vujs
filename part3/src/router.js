@@ -18,9 +18,6 @@ export default new Router({
       components: {
         default: Home,
         header: HeaderHome
-      },
-      beforeEnter(to, from, next) {
-        next(false)
       }
     },
     {
@@ -52,10 +49,6 @@ export default new Router({
     }
   ],
   scrollBehavior(to, from, savedPosition) {
-    console.log(savedPosition)
-    console.log(from)
-    console.log(to);
-
     return new Promise(resolve => {
       this.app.$root.$once("triggerScroll", () => {
         let postion = { x: 0, y: 0 }

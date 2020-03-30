@@ -5,16 +5,16 @@ import router from './router'
 Vue.config.productionTip = false
 
 // 認証していない場合とかに使う（ログインしていないとき）
-router.beforeEach((to, from, next) => {
-  console.log(to)
-  console.log(from)
-  console.log(next)
+// router.beforeEach((to, from, next) => {
+//   console.log(to)
+//   console.log(from)
+//   console.log(next)
 
-  if (to.path === '/users/1') {
-    next('/')
-  }
-  next()
-})
+//   if (to.path === '/users/1') {
+//     next('/')
+//   }
+//   next()
+// })
 
 new Vue({
   router,
