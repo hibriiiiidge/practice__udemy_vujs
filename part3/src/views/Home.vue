@@ -8,7 +8,7 @@
       ユーザーのページへ
     </button>
     <p>
-      {{ count }}
+      {{ doubleCount }}
     </p>
   </div>
 </template>
@@ -16,8 +16,8 @@
 <script>
 export default {
   computed: {
-    count() {
-      return this.$store.state.count
+    doubleCount() {
+      return this.$store.getters.doubleCount
     }
   },
   methods: {
