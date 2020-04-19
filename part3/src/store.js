@@ -9,6 +9,7 @@ export default new Vuex.Store({
   },
   // computed プロパティ的な役割
   getters: {
-    doubleCount: state => state.count * 2
+    doubleCount: state => state.count * 2,
+    tripleCount: state => state.count * 3
   }
 })

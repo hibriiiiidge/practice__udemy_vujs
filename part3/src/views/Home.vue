@@ -10,15 +10,18 @@
     <p>
       {{ doubleCount }}
     </p>
+    <p>
+      {{ tripleCount }}
+    </p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   computed: {
-    doubleCount() {
-      return this.$store.getters.doubleCount
-    }
+    ...mapGetters(["doubleCount", "tripleCount"])
   },
   methods: {
     toUsers() {
