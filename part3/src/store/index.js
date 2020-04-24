@@ -1,6 +1,18 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { count } from './modules/count';
+import {
+  getters
+}
+from './getters';
+import {
+  mutations
+}
+from './mutations';
+import {
+  actions
+}
+from './actions';
 
 Vue.use(Vuex);
 
@@ -9,23 +21,11 @@ export default new Vuex.Store({
     message: ''
   },
   // computed プロパティ的な役割
-  getters: {
-    message: state => state.message
-  },
+  getters,
   // state は mutation でしか変更しない
   // data の変更を追跡しやすく、予測しやすくする
-  mutations: {
-    updateMessage(state, newMessage) {
-      state.message = newMessage
-    }
-  },
-  actions: {
-    updateMessage({
-      commit
-    }, newMessage) {
-      commit("updateMessage", newMessage)
-    }
-  },
+  mutations,
+  actions,
   modules: {
     count
   }

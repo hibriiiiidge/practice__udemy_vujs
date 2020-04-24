@@ -30,6 +30,7 @@ const actions = {
 }
 
 export const count = {
+  namespaced: true,
   state,
   getters,
   mutations,

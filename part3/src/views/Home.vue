@@ -24,11 +24,17 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(["doubleCount", "tripleCount"]),
+    // ...mapGetters("count",["doubleCount", "tripleCount"]),
+    doubleCount() {
+      return this.$store.getters["count/doubleCount"]
+    },
+    tripleCount() {
+      return this.$store.getters["count/tripleCount"]
+    },
     // message() {
     //   return this.$store.getters.message
     // }
