@@ -13,6 +13,14 @@
     <p>
       {{ tripleCount }}
     </p>
+    <input
+      type="text"
+      :value="message"
+      @input="updateMessage"
+    >
+    <p>
+      {{ message }}
+    </p>
   </div>
 </template>
 
@@ -21,9 +29,15 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(["doubleCount", "tripleCount"])
+    ...mapGetters(["doubleCount", "tripleCount"]),
+    message() {
+      return this.$store.getters.message
+    }
   },
   methods: {
+    updateMessage(e) {
+      this.$store.dispatch("updateMessage", e.target.value)
+    },
     toUsers() {
       // this.$router.push('/users')
       this.$router.push({
