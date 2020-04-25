@@ -9,6 +9,11 @@
     <br>
     <button @click="createCommnet">サーバーに送る</button>
     <h2>掲示板</h2>
+    <div v-for="post in posts" :key="post.name">
+      <div>名前: {{ post.fields.name.stringValue }}</div>
+      <div>コメント: {{ post.fields.comment.stringValue }}</div>
+      <br>
+    </div>
   </div>
 </template>
 
@@ -19,8 +24,17 @@ export default {
   data() {
     return {
       name: '',
-      comment: ''
+      comment: '',
+      posts: []
     }
+  },
+  created() {
+    axios.get(
+      "https://firestore.googleapis.com/v1/projects/udemy-vuejs-http-20c62/databases/(default)/documents/comments"
+    ).then(response => {
+      this.posts = response.data.documents
+      console.log(response.data.documents)
+    })
   },
   methods: {
     createCommnet() {
