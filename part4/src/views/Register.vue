@@ -5,13 +5,15 @@
     <input type="text" id="name" v-model="email">
     <br>
     <label for="comment">Password</label>
-    <input type="text" id="password" v-model="password">
+    <input type="password" id="password" v-model="password">
     <br>
     <button @click="register">登録</button>
   </div>
 </template>
 
 <script>
+import axios from '../axios-auth'
+
 export default {
   data() {
     return {
@@ -20,7 +22,19 @@ export default {
     }
   },
   methods: {
-    register () { }
+    register () {
+      axios.post(
+        '/accounts:signUp?key=AIzaSyC4c1SackQXBWDO3Y3zNK-Q-2tYrQxtwvc',
+        {
+          email: this.email,
+          password: this.password,
+          returnSecureToken: true
+        }
+      ).then(res => {
+        console.log(res)
+
+      })
+    }
   }
 }
 </script>
