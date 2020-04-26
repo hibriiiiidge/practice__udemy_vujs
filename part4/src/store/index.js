@@ -19,7 +19,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    autoLogin({ commit, dispatch }) {
+    async autoLogin({ commit, dispatch }) {
       const idToken = localStorage.getItem('idToken')
       if (!idToken) return
       const now = new Date()
@@ -27,7 +27,7 @@ export default new Vuex.Store({
       const isExpired = now.getTime() >= expiryTimeMs
       const refreshToken = localStorage.getItem('refreshToken')
       if (isExpired) {
-        dispatch('refreshIdToken', refreshToken)
+        await dispatch('refreshIdToken', refreshToken)
       } else {
         // 有効期限が切れていない場合で、40分経過後に autoLogin が呼ばれたとする
         // setTimeout をしないとそこから1時間後に refreshIdToken されるが、
@@ -55,8 +55,8 @@ export default new Vuex.Store({
         router.push('/')
       })
     },
-    refreshIdToken({ dispatch }, refreshToken) {
-      axiosRefresh.post(
+    async refreshIdToken({ dispatch }, refreshToken) {
+      await axiosRefresh.post(
         'token?key=AIzaSyC4c1SackQXBWDO3Y3zNK-Q-2tYrQxtwvc', {
           grant_type: 'refresh_token',
           refresh_token: refreshToken

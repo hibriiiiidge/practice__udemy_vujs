@@ -33,10 +33,10 @@ axios.interceptors.response.use(
 
 
 // JS 読み込み時に autoLogin が走るようにする
-store.dispatch('autoLogin')
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+store.dispatch('autoLogin').then(() => {
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app')
+})
