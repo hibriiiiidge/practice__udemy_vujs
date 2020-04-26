@@ -31,6 +31,10 @@ axios.interceptors.response.use(
   }
 )
 
+
+// JS 読み込み時に autoLogin が走るようにする
+store.dispatch('autoLogin')
+
 new Vue({
   router,
   store,
